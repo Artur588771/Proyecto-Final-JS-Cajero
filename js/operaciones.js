@@ -21,17 +21,19 @@ function inhabilitarNumeros(){
     const valor= document.querySelectorAll('.valor');    
     valor.forEach(element => {
         element.disabled=true;    
-    });    
+    });
+    document.querySelector('#igual').disabled=true;        
 }
 
 function habilitarNumeros(){
     const valor= document.querySelectorAll('.valor');    
     valor.forEach(element => {
         element.disabled=false;    
-    });    
+    });
+    document.querySelector('#igual').disabled=false;    
 }
 
-//inhabilitarNumeros();
+inhabilitarNumeros();
 
 function validaroperacion(saldo){
     if(datos.textContent == 10 ){
@@ -48,7 +50,10 @@ function validaroperacion(saldo){
 
 validaroperacion(datos.textContent);   
 
-function recibirValores(num){        
+function recibirValores(num){
+    if(num=='+' || num=='-'){
+        habilitarNumeros();
+    }
     validaroperacion(datos.textContent);   
     console.log(datos.textContent);         
     if(num>=0 && primerdato==true)
@@ -64,6 +69,7 @@ function resultado(){
     let resolver=0;    
     resolver=eval(operacion);
     datos.textContent=resolver;
+    if(datos.textContent >=10 && datos.textContent<=990){    
     clientes.forEach(element => {
        if(element.correo==sessionStorage.getItem('sessionCorreo')){                 
         element.saldo=Number(datos.textContent);
@@ -71,5 +77,9 @@ function resultado(){
        
     });
     validaroperacion(datos.textContent); 
-    localStorage.setItem('cuentas',JSON.stringify(clientes));    
+    localStorage.setItem('cuentas',JSON.stringify(clientes));
+    }else{
+        alert('El saldo debe tener minimo 10 y un maximo de 990');
+        datos.textContent=recuCliente[0].saldo;
+    }    
 }

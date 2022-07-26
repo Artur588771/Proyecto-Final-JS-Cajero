@@ -27,12 +27,12 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-    'header header header header'
-    'limpiar suma resta igual'
-    'siete ocho nueve igual'    
-    'cuatro cinco seis igual'
-    'uno dos tres igual'
-    'cero cero cero igual';
+    'header header header'
+    'limpiar suma resta'
+    'siete ocho nueve'    
+    'cuatro cinco seis'
+    'uno dos tres'
+    'cero cero igual';
 
   gap: 10px;
   background-color: #2196F3;
