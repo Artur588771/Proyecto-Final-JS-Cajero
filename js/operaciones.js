@@ -17,7 +17,39 @@ function resetear(reset){
     primerdato=true;    
 }
 
-function recibirValores(num){       
+function inhabilitarNumeros(){
+    const valor= document.querySelectorAll('.valor');    
+    valor.forEach(element => {
+        element.disabled=true;    
+    });    
+}
+
+function habilitarNumeros(){
+    const valor= document.querySelectorAll('.valor');    
+    valor.forEach(element => {
+        element.disabled=false;    
+    });    
+}
+
+//inhabilitarNumeros();
+
+function validaroperacion(saldo){
+    if(datos.textContent == 10 ){
+        document.querySelector('#resta').disabled=true;
+        document.querySelector('#suma').disabled=false;
+    }else if(datos.textContent == 990){
+        document.querySelector('#suma').disabled=true;
+        document.querySelector('#resta').disabled=false;
+    }else{
+        document.querySelector('#suma').disabled=false;
+        document.querySelector('#resta').disabled=false;
+    }
+}
+
+validaroperacion(datos.textContent);   
+
+function recibirValores(num){        
+    validaroperacion(datos.textContent);   
     console.log(datos.textContent);         
     if(num>=0 && primerdato==true)
     alert('Porfavor Seleciona primero una operacion')
@@ -28,7 +60,7 @@ function recibirValores(num){
     return operacion=datos.textContent;        
 }
 
-function resultado(){    
+function resultado(){          
     let resolver=0;    
     resolver=eval(operacion);
     datos.textContent=resolver;
@@ -38,5 +70,6 @@ function resultado(){
        }
        
     });
+    validaroperacion(datos.textContent); 
     localStorage.setItem('cuentas',JSON.stringify(clientes));    
 }
