@@ -9,12 +9,12 @@ const recuCliente = clientes.filter((cliente) => cliente.correo == sessionStorag
 console.log(recuCliente);
 datos.textContent=recuCliente[0].saldo;
 
-let primerdato=true;
 let operacion='';
 
 function resetear(reset){    
-    datos.textContent=reset;
-    primerdato=true;    
+    datos.textContent=recuCliente[0].saldo;
+    inhabilitarNumeros();
+    validaroperacion(datos.textContent);   
 }
 
 function inhabilitarNumeros(){
@@ -31,6 +31,17 @@ function habilitarNumeros(){
         element.disabled=false;    
     });
     document.querySelector('#igual').disabled=false;    
+}
+
+function disabledOperadores(accion){
+    if(accion==true){
+        document.querySelector('#resta').disabled=true;
+        document.querySelector('#suma').disabled=true;   
+    }
+    if(accion==false){
+        document.querySelector('#resta').disabled=false;
+        document.querySelector('#suma').disabled=false;    
+    }    
 }
 
 inhabilitarNumeros();
@@ -51,17 +62,21 @@ function validaroperacion(saldo){
 validaroperacion(datos.textContent);   
 
 function recibirValores(num){
+    validaroperacion(datos.textContent);
     if(num=='+' || num=='-'){
         habilitarNumeros();
+        //document.querySelector('#resta').disabled=true;
+        disabledOperadores(true);
     }
-    validaroperacion(datos.textContent);   
-    console.log(datos.textContent);         
-    if(num>=0 && primerdato==true)
-    alert('Porfavor Seleciona primero una operacion')
-    else{    
-    primerdato=false;
-    datos.textContent+=num;
-    }        
+    if(num>=0){
+        disabledOperadores(true);
+    }
+    // if(num=='-'){
+    //     habilitarNumeros();
+    //     //document.querySelector('#suma').disabled=true;        
+    //     disabledOperadores(true);
+    // }               
+    datos.textContent+=num;    
     return operacion=datos.textContent;        
 }
 
@@ -76,10 +91,14 @@ function resultado(){
        }
        
     });
+    disabledOperadores(false);
     validaroperacion(datos.textContent); 
     localStorage.setItem('cuentas',JSON.stringify(clientes));
+    inhabilitarNumeros();    
     }else{
         alert('El saldo debe tener minimo 10 y un maximo de 990');
         datos.textContent=recuCliente[0].saldo;
+        inhabilitarNumeros();
+        validaroperacion(datos.textContent);
     }    
 }
