@@ -1,4 +1,9 @@
+if(sessionStorage.hasOwnProperty('sessionCorreo')==false){
+    principal.innerHTML='Acceso Restringido';
+}
+
 const bienvenido = document.querySelector('#bienvenido');
+const mensajeValidar = document.querySelector('#mensajeValidar');
 
 bienvenido.textContent = `
 ${sessionStorage.getItem('sessionNombre')} Bienvenido(a)`;
@@ -14,7 +19,8 @@ let operacion='';
 function resetear(reset){    
     datos.textContent=recuCliente[0].saldo;
     inhabilitarNumeros();
-    validaroperacion(datos.textContent);   
+    validaroperacion(datos.textContent); 
+    mensajeValidar.textContent=''      
 }
 
 function inhabilitarNumeros(){
@@ -63,7 +69,8 @@ validaroperacion(datos.textContent);
 
 function recibirValores(num){
     validaroperacion(datos.textContent);
-    if(num=='+' || num=='-'){
+    mensajeValidar.textContent='';    
+    if(num=='+' || num=='-'){        
         habilitarNumeros();
         //document.querySelector('#resta').disabled=true;
         disabledOperadores(true);
@@ -96,9 +103,17 @@ function resultado(){
     localStorage.setItem('cuentas',JSON.stringify(clientes));
     inhabilitarNumeros();    
     }else{
-        alert('El saldo debe tener minimo 10 y un maximo de 990');
+        //alert('El saldo debe tener minimo 10 y un maximo de 990');
+        mensajeValidar.textContent='El saldo debe ser: Min 10 y Max 990';
         datos.textContent=recuCliente[0].saldo;
         inhabilitarNumeros();
         validaroperacion(datos.textContent);
     }    
+}
+
+function cerrarSesion(){
+    sessionStorage.removeItem('sessionNombre');   
+    sessionStorage.removeItem('sessionCorreo');
+    sessionStorage.clear();
+    window.close('cajero.html');
 }
