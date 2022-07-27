@@ -115,5 +115,5 @@ function cerrarSesion(){
     sessionStorage.removeItem('sessionNombre');   
     sessionStorage.removeItem('sessionCorreo');
     sessionStorage.clear();
-    window.close('cajero.html');
+    window.open('index.html','_self');
 }
