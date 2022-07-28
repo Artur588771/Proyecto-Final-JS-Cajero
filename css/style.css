@@ -46,3 +46,9 @@ button{
   font-size: 20px;
   box-shadow: 0 2px 4px 0 black, 0 3px 10px 0 gray;
 }
+
+@media screen and (min-width: 750px) and (max-width: 1000px) {
+  .grid-container {
+    width: 400px;
+  }
+}
