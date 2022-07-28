@@ -1,3 +1,4 @@
+//Hecho por Arturo Renteria
 //1 Verifica la session
 if(sessionStorage.hasOwnProperty('sessionCorreo')==false){
     principal.innerHTML='Acceso Restringido';
@@ -11,9 +12,7 @@ bienvenido.textContent = `
 ${sessionStorage.getItem('sessionNombre')} Bienvenido(a)`;
 
 const clientes = JSON.parse(localStorage.getItem('cuentas'));
-console.log(clientes);
 const recuCliente = clientes.filter((cliente) => cliente.correo == sessionStorage.getItem('sessionCorreo'));    
-console.log(recuCliente);
 datos.textContent=recuCliente[0].saldo;
 
 let operacion='';

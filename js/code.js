@@ -1,3 +1,4 @@
+//Hecho por Arturo Renteria
 //1 Obtener Variables
 const inputEmail = document.querySelector('#inputEmail');
 const inputPassword = document.querySelector('#inputPassword');
@@ -14,8 +15,7 @@ formlogin.addEventListener('submit', (e) => {
         sessionStorage.setItem('sessionNombre',recuCliente[0].nombre);                
         window.open('cajero.html','_self');        
     }else{                
-        loginInvalido.textContent='Correo y/o contraseña invalidos';
-        //alert('Correo y/o contraseña invalidos');        
+        loginInvalido.textContent='Correo y/o contraseña invalidos';        
     }
     formlogin.reset();     
 });

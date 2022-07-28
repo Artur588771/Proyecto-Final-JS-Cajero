@@ -1,3 +1,4 @@
+////Hecho por Arturo Renteria
 //1. Crear el arreglo de clientes
 const cuentas = [
     {
