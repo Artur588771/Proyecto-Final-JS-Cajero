@@ -1,7 +1,9 @@
+//1 Verifica la session
 if(sessionStorage.hasOwnProperty('sessionCorreo')==false){
     principal.innerHTML='Acceso Restringido';
 }
 
+//2 Declara Variables
 const bienvenido = document.querySelector('#bienvenido');
 const mensajeValidar = document.querySelector('#mensajeValidar');
 
@@ -16,6 +18,7 @@ datos.textContent=recuCliente[0].saldo;
 
 let operacion='';
 
+//3 funciones
 function resetear(reset){    
     datos.textContent=recuCliente[0].saldo;
     inhabilitarNumeros();
@@ -71,18 +74,12 @@ function recibirValores(num){
     validaroperacion(datos.textContent);
     mensajeValidar.textContent='';    
     if(num=='+' || num=='-'){        
-        habilitarNumeros();
-        //document.querySelector('#resta').disabled=true;
+        habilitarNumeros();        
         disabledOperadores(true);
     }
     if(num>=0){
         disabledOperadores(true);
-    }
-    // if(num=='-'){
-    //     habilitarNumeros();
-    //     //document.querySelector('#suma').disabled=true;        
-    //     disabledOperadores(true);
-    // }               
+    }    
     datos.textContent+=num;    
     return operacion=datos.textContent;        
 }
@@ -102,8 +99,7 @@ function resultado(){
     validaroperacion(datos.textContent); 
     localStorage.setItem('cuentas',JSON.stringify(clientes));
     inhabilitarNumeros();    
-    }else{
-        //alert('El saldo debe tener minimo 10 y un maximo de 990');
+    }else{        
         mensajeValidar.textContent='El saldo debe ser: Min 10 y Max 990';
         datos.textContent=recuCliente[0].saldo;
         inhabilitarNumeros();

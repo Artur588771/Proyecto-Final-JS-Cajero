@@ -7,21 +7,21 @@ const cuentas = [
         saldo:200
     },
     {
-        nombre:'Kim',
-        correo:'kim@curso.net',
-        password:'kim123',
-        saldo:500
+        nombre:'Krystel Baca',
+        correo:'krystel@curso.net',
+        password:'krystel123',
+        saldo:990
     },
     {
-        nombre:'Guadalupe',
-        correo:'guadalupe@curso.net',
-        password:'guadalupe123',
+        nombre:'Andres Sanchez',
+        correo:'andres@curso.net',
+        password:'andres123',
         saldo:10
     },
     {
-        nombre:'Carmen',
-        correo:'carmen@curso.net',
-        password:'carmen123',
+        nombre:'Jesus',
+        correo:'jesus@curso.net',
+        password:'jesus123',
         saldo:900
     }
 ];

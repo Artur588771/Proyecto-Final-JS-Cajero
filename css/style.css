@@ -35,7 +35,7 @@
     'cero cero igual';
 
   gap: 10px;
-  background-color: #2196F3;
+  background-color: #4D648D;
   padding: 10px;
   width: 110%;
   height: 300px;
@@ -45,6 +45,21 @@ button{
   font-weight: bold;  
   font-size: 20px;
   box-shadow: 0 2px 4px 0 black, 0 3px 10px 0 gray;
+}
+.fondoHeader{
+  background-color: #283655;  
+}
+
+.fondoBoton{
+  background-color: #4D648D;
+}
+
+.colorEtiqueta{
+  color: #4D648D;
+}
+
+.fondoAlert{
+  background-color: #D0E1F9;
 }
 
 @media screen and (min-width: 750px) and (max-width: 1000px) {

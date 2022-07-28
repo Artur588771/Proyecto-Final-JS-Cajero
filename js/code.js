@@ -4,6 +4,7 @@ const inputPassword = document.querySelector('#inputPassword');
 const formlogin = document.querySelector('#formlogin');
 const loginInvalido = document.querySelector('#loginInvalido');
 
+//2 Evento submit de logueo y creacion de la session
 formlogin.addEventListener('submit', (e) => {
     e.preventDefault();    
     const clientes = JSON.parse(localStorage.getItem('cuentas'));
@@ -19,6 +20,7 @@ formlogin.addEventListener('submit', (e) => {
     formlogin.reset();     
 });
 
+//3 Cerrar Sesion
 function cerrarSesion(){
     sessionStorage.removeItem('sessionNombre');   
     sessionStorage.removeItem('sessionCorreo');
